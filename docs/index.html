@@ -6,6 +6,7 @@
     <title>GitHub ハンズオンチュートリアル | Kintone開発者向け</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* index.html専用スタイル */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -167,6 +168,14 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
+        /* 共通スタイルのオーバーライド */
+        .info {
+            background: #f1f8ff;
+            border: 1px solid #c8e1ff;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -174,6 +183,9 @@
         <h1>🚀 GitHub ハンズオンチュートリアル</h1>
         <p>Kintone JavaScript開発者のための実践的GitHub学習コース</p>
         <p><strong>ブラウザだけで体験 → 本格的な開発環境まで</strong></p>
+        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 0.9em;">
+            📝 <strong>Note:</strong> このチュートリアルは友人向けに作成した学習教材です
+        </div>
     </div>
     
     <div class="content">
@@ -212,6 +224,9 @@
                 <div class="difficulty">⭐⭐⭐</div>
                 <h3>⚡ 本格実践編</h3>
                 <div class="duration">⏰ 約60分</div>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 8px; margin-bottom: 10px; font-size: 0.85em;">
+                    🚧 <strong>開発中:</strong> 現在はモック版です
+                </div>
                 <p>プロの開発環境でのGit/GitHub活用法</p>
                 <ul>
                     <li>WSL2 + VS Code環境構築</li>
@@ -234,32 +249,6 @@
                     <li>GitHub Copilot Business導入</li>
                 </ul>
                 <a href="03_company_setup.html" class="start-btn">導入検討 →</a>
-            </div>
-        </div>
-        
-        <div class="features">
-            <h2>🌟 このチュートリアルの特徴</h2>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="icon">🎯</div>
-                    <h3>実践的</h3>
-                    <p>実際のGitHub画面で操作しながら学習</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">📱</div>
-                    <h3>段階的</h3>
-                    <p>ブラウザ操作から本格開発まで</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">🇯🇵</div>
-                    <h3>日本語対応</h3>
-                    <p>全て日本語で分かりやすく解説</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">⚙️</div>
-                    <h3>Kintone特化</h3>
-                    <p>JavaScript開発を前提とした内容</p>
-                </div>
             </div>
         </div>
         
@@ -299,6 +288,11 @@
                 <li><strong>改善提案</strong>: より良いチュートリアルにするためのアイデア</li>
                 <li><strong>学習体験の共有</strong>: 実際に使ってみた感想や成果</li>
             </ul>
+            <div style="background: #f1f8ff; border-left: 4px solid #0366d6; padding: 10px; margin-top: 15px;">
+                <strong>📌 開発状況:</strong><br>
+                • 基礎知識編・ブラウザ体験編・会社導入編: ✅ 完成<br>
+                • 本格実践編: 🚧 開発中（モック版のみ）
+            </div>
         </div>
         
         <h2>📄 ライセンス</h2>
@@ -306,7 +300,7 @@
     </div>
     
     <div class="footer">
-        <p>© 2025 GitHub Tutorial for Kintone Developers | Made with ❤️ for JavaScript Developers</p>
+        <p>© 2025 rio123dx all rights reserved</p>
     </div>
 </body>
 </html>
