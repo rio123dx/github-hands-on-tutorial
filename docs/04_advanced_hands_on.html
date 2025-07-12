@@ -325,19 +325,21 @@ Hi [username]! You've successfully authenticated, but GitHub does not provide sh
 * feature/enhanced-todo
 </div>
                 
-                <h4>ステップ2: HTMLファイルの更新</h4>
-                <p>VS Codeで <span class="code">index.html</span> を開いて、v2.0の機能に対応させます：</p>
+                <h4>ステップ2: 既存のJavaScriptファイルを更新</h4>
+                <p>VS Codeで <span class="code">script.js</span> を開いて、削除機能付きのv3.0仕様に更新します：</p>
                 
                 <ol>
-                    <li>index.html の <span class="code">&lt;script src="script.js"&gt;</span> を <span class="code">&lt;script src="script_v2.js"&gt;</span> に変更</li>
+                    <li>VS Codeで <span class="code">script.js</span> をクリックして開く</li>
+                    <li>既存の内容をすべて削除</li>
+                    <li>以下のv3.0コードで置き換える</li>
                     <li>ファイルを保存（Ctrl+S）</li>
                 </ol>
                 
-                <h4>ステップ3: 新機能ファイルの作成</h4>
-                <p>VS Codeで新しいファイル <span class="code">script_v3.js</span> を作成：</p>
+                <h4>ステップ3: script.jsの新しい内容</h4>
+                <p>以下のコードをコピー＆ペーストして <span class="code">script.js</span> を更新してください：</p>
                 
                 <div class="terminal">
-<span class="comment">// script_v3.js - 削除機能付きToDoアプリ</span><br>
+<span class="comment">// script.js - 削除機能付きToDoアプリ v3.0</span><br>
 const taskList = document.getElementById('taskList');<br>
 const addButton = document.getElementById('addButton');<br>
 const taskInput = document.getElementById('taskInput');<br>
@@ -391,8 +393,8 @@ taskInput.addEventListener('keypress', (e) => {<br>
                     <h4>✅ チェックポイント</h4>
                     <ul>
                         <li>□ 新しいブランチが作成された</li>
-                        <li>□ index.htmlが更新された</li>
-                        <li>□ script_v3.jsが作成された</li>
+                        <li>□ script.jsが削除機能付きのv3.0仕様に更新された</li>
+                        <li>□ 削除機能のコードが追加された</li>
                         <li>□ VS Code左側でファイル変更が表示されている</li>
                     </ul>
                 </div>
