@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub ハンズオンチュートリアル | Kintone開発者向け</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin: -20px -20px 40px -20px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .course-card {
+            background: white;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .course-card:hover {
+            border-color: #0366d6;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .course-card h3 {
+            color: #24292e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .course-card .duration {
+            background: #f6f8fa;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #586069;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .course-card .difficulty {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2em;
+        }
+        .course-card ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .course-card li {
+            margin-bottom: 8px;
+            color: #586069;
+        }
+        .start-btn {
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+        .start-btn:hover {
+            background: #218838;
+            color: white;
+        }
+        .features {
+            background: #f6f8fa;
+            padding: 40px 20px;
+            margin: 40px -20px;
+            border-radius: 12px;
+        }
+        .features h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #24292e;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .feature-item .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .stats {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .stats h2 {
+            color: #24292e;
+            margin-bottom: 20px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e1e5e9;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #0366d6;
+            display: block;
+        }
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+        .cta h2 {
+            margin-bottom: 20px;
+        }
+        .cta .btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .cta .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🚀 GitHub ハンズオンチュートリアル</h1>
+        <p>Kintone JavaScript開発者のための実践的GitHub学習コース</p>
+        <p><strong>ブラウザだけで体験 → 本格的な開発環境まで</strong></p>
+    </div>
+    
+    <div class="content">
+        <h2>📚 学習コース一覧</h2>
+        <p>段階的にGitHubをマスターしていきましょう。各コースは独立しているので、必要な部分から始められます。</p>
+        
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="difficulty">⭐</div>
+                <h3>📚 基礎知識編</h3>
+                <div class="duration">⏰ 約10分</div>
+                <p>なぜGitHubが必要なのかを理解します</p>
+                <ul>
+                    <li>共有ファイル管理の課題</li>
+                    <li>GitHubのメリット</li>
+                    <li>バージョン管理の重要性</li>
+                </ul>
+                <a href="01_introduction.html" class="start-btn">学習を開始 →</a>
+            </div>
+            
+            <div class="course-card">
+                <div class="difficulty">⭐⭐</div>
+                <h3>💻 ブラウザ体験編</h3>
+                <div class="duration">⏰ 約40分</div>
+                <p>ブラウザだけでGitHubの基本操作を体験</p>
+                <ul>
+                    <li>アカウント作成とリポジトリ管理</li>
+                    <li>ファイル編集とコミット</li>
+                    <li>プルリクエストによるレビュー</li>
+                    <li>リリース管理</li>
+                </ul>
+                <a href="02_hands_on_browser.html" class="start-btn">体験開始 →</a>
+            </div>
+            
+            <div class="course-card">
+                <div class="difficulty">⭐⭐⭐</div>
+                <h3>⚡ 本格実践編</h3>
+                <div class="duration">⏰ 約60分</div>
+                <p>プロの開発環境でのGit/GitHub活用法</p>
+                <ul>
+                    <li>WSL2 + VS Code環境構築</li>
+                    <li>SSH認証とGitコマンド</li>
+                    <li>ブランチ戦略とマージ</li>
+                    <li>コンフリクト解決</li>
+                </ul>
+                <a href="04_advanced_hands_on.html" class="start-btn">実践開始 →</a>
+            </div>
+            
+            <div class="course-card">
+                <div class="difficulty">⭐⭐</div>
+                <h3>🏢 会社導入編</h3>
+                <div class="duration">⏰ 約20分</div>
+                <p>チームでGitHubを導入する方法</p>
+                <ul>
+                    <li>GitHub Organization設定</li>
+                    <li>チーム構成とアクセス権限</li>
+                    <li>ブランチ保護ルール</li>
+                    <li>GitHub Copilot Business導入</li>
+                </ul>
+                <a href="03_company_setup.html" class="start-btn">導入検討 →</a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>🌟 このチュートリアルの特徴</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon">🎯</div>
+                    <h3>実践的</h3>
+                    <p>実際のGitHub画面で操作しながら学習</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">📱</div>
+                    <h3>段階的</h3>
+                    <p>ブラウザ操作から本格開発まで</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🇯🇵</div>
+                    <h3>日本語対応</h3>
+                    <p>全て日本語で分かりやすく解説</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚙️</div>
+                    <h3>Kintone特化</h3>
+                    <p>JavaScript開発を前提とした内容</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <h2>📊 学習統計</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <div>学習コース</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2時間</span>
+                    <div>総学習時間</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">9</span>
+                    <div>実践ステップ</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0円</span>
+                    <div>受講料</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h2>🚀 GitHubマスターへの第一歩</h2>
+            <p>共有ファイル管理から卒業して、プロの開発者と同じツールを使いこなしましょう！</p>
+            <a href="01_introduction.html" class="btn">今すぐ学習を開始する</a>
+        </div>
+        
+        <h2>🤝 サポート・フィードバック</h2>
+        <div class="info">
+            <p>このチュートリアルに関する質問やフィードバックは、GitHubのIssuesでお気軽にお寄せください。</p>
+            <ul>
+                <li><strong>バグ報告</strong>: 動作しない箇所がありましたら報告をお願いします</li>
+                <li><strong>改善提案</strong>: より良いチュートリアルにするためのアイデア</li>
+                <li><strong>学習体験の共有</strong>: 実際に使ってみた感想や成果</li>
+            </ul>
+        </div>
+        
+        <h2>📄 ライセンス</h2>
+        <p>このチュートリアルはMITライセンスの下で公開されています。教育目的での利用、改変、再配布を歓迎します。</p>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 GitHub Tutorial for Kintone Developers | Made with ❤️ for JavaScript Developers</p>
+    </div>
+</body>
+</html>
