@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub入門 - 基礎知識</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>📚 GitHub基礎知識</h1>
+        <p>なぜGitHubが必要なのかを理解しよう</p>
+    </div>
+    
+    <div class="nav">
+        <span class="current">📚 基礎知識</span>
+        <a href="02_hands_on_browser.html">💻 ブラウザ体験</a>
+        <a href="04_advanced_hands_on.html">⚡ 本格実践</a>
+        <a href="03_company_setup.html">🏢 会社導入</a>
+    </div>
+    
+    <div class="content">
+        <h2>🎯 今日の学習ゴール</h2>
+        <div class="goals">
+            <ol>
+                <li><strong>GitHubの基本概念の理解</strong></li>
+                <li><strong>ソースコード管理の重要性とメリットの体感</strong></li>
+                <li><strong>実際のワークフローを使った開発体験</strong></li>
+                <li><strong>会社での導入時の具体的なステップ</strong></li>
+            </ol>
+        </div>
+        
+        <h2>🤔 現在の状況を振り返ってみましょう</h2>
+        <p>現在、KintoneのJavaScriptを<span class="highlight">共有ファイル</span>で管理されていますね。</p>
+        
+        <div class="problem">
+            <h3>❌ 共有ファイル管理の課題</h3>
+            <ul>
+                <li><strong>誤って上書きしてしまうリスク</strong><br>
+                    → 他の人が編集中に気づかず上書き</li>
+                <li><strong>過去のバージョンに戻せない</strong><br>
+                    → 「昨日まで動いていたのに...」が解決できない</li>
+                <li><strong>複数人での同時編集ができない</strong><br>
+                    → 誰かが編集中は待つしかない</li>
+                <li><strong>変更履歴や理由が残らない</strong><br>
+                    → 「なぜこの変更をしたのか」が分からない</li>
+            </ul>
+        </div>
+        
+        <h2>💡 GitHubとは</h2>
+        <p><strong>GitHub</strong>は、Microsoft社が運営する世界最大の開発プラットフォームです。</p>
+        <ul>
+            <li><strong>Git</strong>（分散型バージョン管理システム）をベースとしたクラウドサービス</li>
+            <li>ソースコードの履歴管理、共同開発、コードレビューを効率化</li>
+            <li>世界中の開発者が利用（Microsoft、Google、Appleも使用）</li>
+        </ul>
+        
+        <div class="solution">
+            <h3>✅ GitHubで解決できること</h3>
+            <ul>
+                <li><strong>世代管理（バージョン管理）</strong><br>
+                    → 変更履歴を完全に保持、いつでも過去の状態に戻せる</li>
+                <li><strong>変更追跡</strong><br>
+                    → 誰が、いつ、何を、なぜ変更したかが記録される</li>
+                <li><strong>ブランチ機能</strong><br>
+                    → 本番環境に影響せずに実験的な開発が可能</li>
+                <li><strong>プルリクエスト（PR）</strong><br>
+                    → コードレビューによる品質向上</li>
+                <li><strong>タグによるリリース管理</strong><br>
+                    → 安定版のスナップショットを作成・配布</li>
+                <li><strong>Issue管理</strong><br>
+                    → バグ報告や機能要望の追跡</li>
+            </ul>
+        </div>
+        
+        <h2>📊 比較：現在 vs GitHub</h2>
+        <div class="comparison">
+            <div class="problem">
+                <h3>現在の共有ファイル</h3>
+                <ul>
+                    <li>❌ ファイル名で世代管理<br>
+                        <small>script_v1.js, script_v2.js...</small></li>
+                    <li>❌ 変更者・理由が不明</li>
+                    <li>❌ 同時編集でコンフリクト</li>
+                    <li>❌ バックアップは手動</li>
+                    <li>❌ コードレビューなし</li>
+                </ul>
+            </div>
+            <div class="solution">
+                <h3>GitHubでの管理</h3>
+                <ul>
+                    <li>✅ 自動的な履歴管理<br>
+                        <small>全ての変更が自動記録</small></li>
+                    <li>✅ 変更者・日時・理由が記録</li>
+                    <li>✅ 並行開発をマージで統合</li>
+                    <li>✅ クラウドで自動バックアップ</li>
+                    <li>✅ プルリクエストでレビュー</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>🎬 次のステップ</h2>
+        <p>理論は分かりました。次は実際にGitHubを触ってみましょう！</p>
+        <p>ブラウザだけで、GitHubの基本的な機能を体験します。</p>
+        
+        <a href="02_hands_on_browser.html" class="btn">💻 実際にGitHubを体験してみる →</a>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 GitHub Tutorial for Kintone Developers</p>
+    </div>
+</body>
+</html>

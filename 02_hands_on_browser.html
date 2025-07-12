@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub体験 - ブラウザでハンズオン</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ページ固有のスタイル（JavaScript制御用） */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💻 GitHub体験（ブラウザ版）</h1>
+        <p>まずはブラウザだけでGitHubの基本を体験してみましょう</p>
+        <div class="progress">
+            <div class="progress-bar" style="width: 0%" id="progressBar"></div>
+        </div>
+        <p><span id="currentStep">0</span> / 9 ステップ完了</p>
+    </div>
+    
+    <div class="nav">
+        <a href="01_introduction.html">📚 基礎知識</a>
+        <span class="current">💻 ブラウザ体験</span>
+        <a href="04_advanced_hands_on.html">⚡ 本格実践</a>
+        <a href="03_company_setup.html">🏢 会社導入</a>
+    </div>
+    
+    <div class="content">
+        <div class="toc">
+            <h3>📋 このハンズオンの流れ（所要時間：約40分）</h3>
+            <ul>
+                <li><strong>ステップ1-3:</strong> アカウント作成とリポジトリ初期設定（10分）</li>
+                <li><strong>ステップ4-6:</strong> ファイル追加とコミット体験（15分）</li>
+                <li><strong>ステップ7:</strong> プルリクエストによるレビュー体験（10分）</li>
+                <li><strong>ステップ8-9:</strong> リリース管理の実践（5分）</li>
+            </ul>
+        </div>
+        
+        <div class="step" id="step1">
+            <h3>ステップ1: GitHubアカウント作成</h3>
+            <p>まずはGitHubのアカウントを作成しましょう。</p>
+            
+            <ol>
+                <li>ブラウザで <a href="https://github.com" target="_blank" class="code">github.com</a> にアクセス</li>
+                <li>右上の <strong>「Sign up」</strong> ボタンをクリック</li>
+                <li>以下の情報を入力：
+                    <ul>
+                        <li><strong>Username:</strong> 半角英数字で任意の名前</li>
+                        <li><strong>Email:</strong> 普段使うメールアドレス</li>
+                        <li><strong>Password:</strong> 8文字以上の安全なパスワード</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <div class="screenshot-placeholder">
+                📸 スクリーンショット: GitHubサインアップページ
+            </div>
+            
+            <div class="warning">
+                <strong>⚠️ 注意:</strong> Usernameは後から変更できますが、URLに使われるので覚えやすいものにしましょう。
+            </div>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ GitHubにログインできた</li>
+                    <li>□ ダッシュボードページが表示された</li>
+                </ul>
+            </div>
+            
+            <button onclick="completeStep(1)" class="btn btn-next">ステップ1完了 →</button>
+        </div>
+        
+        <div class="step" id="step2" style="display:none;">
+            <h3>ステップ2: 新規リポジトリの作成</h3>
+            <p>コードを保存する「リポジトリ」を作成します。</p>
+            
+            <ol>
+                <li>ダッシュボードの左側にある <strong>「New」</strong> ボタンをクリック</li>
+                <li>リポジトリ名に <span class="code">js_tutorial</span> と入力</li>
+                <li><strong>「Public」</strong> を選択（無料プランの場合）</li>
+                <li><strong>「Add a README file」</strong> にチェック</li>
+                <li><strong>「Create repository」</strong> ボタンをクリック</li>
+            </ol>
+            
+            <div class="screenshot-placeholder">
+                📸 スクリーンショット: リポジトリ作成画面
+            </div>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ <span class="code">js_tutorial</span> リポジトリが作成された</li>
+                    <li>□ README.mdファイルが表示されている</li>
+                    <li>□ URLが <span class="code">github.com/[ユーザー名]/js_tutorial</span> になっている</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(2)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(2)" class="btn btn-next">ステップ2完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step3" style="display:none;">
+            <h3>ステップ3: README.mdの編集</h3>
+            <p>プロジェクトの説明文を書いてみましょう。</p>
+            
+            <ol>
+                <li><span class="code">README.md</span> ファイルをクリック</li>
+                <li>右上の鉛筆アイコン（✏️）をクリックして編集モードに</li>
+                <li>以下の内容に置き換え：</li>
+            </ol>
+            
+            <div class="terminal">
+<span class="comment"># Kintone JavaScript Tutorial</span><br>
+<br>
+このリポジトリは、KintoneのJavaScript開発を学習するためのものです。<br>
+<br>
+<span class="comment">## ファイル構成</span><br>
+- index.html: メインのHTMLファイル<br>
+- script.js: ToDoアプリ v1.0<br>
+- script_v2.js: ToDoアプリ v2.0（機能拡張版）<br>
+<br>
+<span class="comment">## 学習内容</span><br>
+- GitHubの基本的な使い方<br>
+- バージョン管理の重要性<br>
+- コラボレーション開発<br>
+</div>
+            
+            <ol start="4">
+                <li>下部の <strong>「Commit changes」</strong> をクリック</li>
+                <li>コミットメッセージに「プロジェクト説明を追加」と入力</li>
+                <li><strong>「Commit changes」</strong> ボタンをクリック</li>
+            </ol>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ README.mdが更新された</li>
+                    <li>□ ファイル履歴に「プロジェクト説明を追加」が記録された</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(3)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(3)" class="btn btn-next">ステップ3完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step4" style="display:none;">
+            <h3>ステップ4: HTMLファイルの追加</h3>
+            <p>ToDoアプリのHTMLファイルを追加します。</p>
+            
+            <ol>
+                <li>リポジトリのトップページで <strong>「Add file」</strong> → <strong>「Create new file」</strong> をクリック</li>
+                <li>ファイル名に <span class="code">index.html</span> と入力</li>
+                <li>以下のHTMLコードを入力：</li>
+            </ol>
+            
+            <div class="terminal">
+<span class="comment">&lt;!DOCTYPE html&gt;</span><br>
+<span class="comment">&lt;html lang="ja"&gt;</span><br>
+<span class="comment">&lt;head&gt;</span><br>
+    <span class="comment">&lt;meta charset="UTF-8"&gt;</span><br>
+    <span class="comment">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span><br>
+    <span class="comment">&lt;title&gt;ToDoアプリ&lt;/title&gt;</span><br>
+    <span class="comment">&lt;style&gt;</span><br>
+        body {<br>
+            font-family: Arial, sans-serif;<br>
+            max-width: 600px;<br>
+            margin: 50px auto;<br>
+            padding: 20px;<br>
+            background-color: #f5f5f5;<br>
+        }<br>
+        .container {<br>
+            background: white;<br>
+            padding: 30px;<br>
+            border-radius: 8px;<br>
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);<br>
+        }<br>
+        h1 {<br>
+            color: #333;<br>
+            text-align: center;<br>
+        }<br>
+        .input-area {<br>
+            display: flex;<br>
+            gap: 10px;<br>
+            margin-bottom: 20px;<br>
+        }<br>
+        input[type="text"] {<br>
+            flex: 1;<br>
+            padding: 10px;<br>
+            border: 1px solid #ddd;<br>
+            border-radius: 4px;<br>
+            font-size: 16px;<br>
+        }<br>
+        button {<br>
+            padding: 10px 20px;<br>
+            background: #007bff;<br>
+            color: white;<br>
+            border: none;<br>
+            border-radius: 4px;<br>
+            cursor: pointer;<br>
+        }<br>
+        #taskList {<br>
+            list-style-type: none;<br>
+            padding: 0;<br>
+        }<br>
+        #taskList li {<br>
+            background: #f8f9fa;<br>
+            margin: 5px 0;<br>
+            padding: 10px;<br>
+            border-radius: 4px;<br>
+            border-left: 4px solid #007bff;<br>
+        }<br>
+    <span class="comment">&lt;/style&gt;</span><br>
+<span class="comment">&lt;/head&gt;</span><br>
+<span class="comment">&lt;body&gt;</span><br>
+    <span class="comment">&lt;div class="container"&gt;</span><br>
+        <span class="comment">&lt;h1&gt;ToDoリスト&lt;/h1&gt;</span><br>
+        <span class="comment">&lt;div class="input-area"&gt;</span><br>
+            <span class="comment">&lt;input type="text" id="taskInput" placeholder="新しいタスクを入力..."&gt;</span><br>
+            <span class="comment">&lt;button id="addButton"&gt;追加&lt;/button&gt;</span><br>
+        <span class="comment">&lt;/div&gt;</span><br>
+        <span class="comment">&lt;ul id="taskList"&gt;&lt;/ul&gt;</span><br>
+    <span class="comment">&lt;/div&gt;</span><br>
+    <span class="comment">&lt;script src="script.js"&gt;&lt;/script&gt;</span><br>
+<span class="comment">&lt;/body&gt;</span><br>
+<span class="comment">&lt;/html&gt;</span><br>
+</div>
+            
+            <ol start="4">
+                <li>コミットメッセージに「ToDoアプリのHTMLファイルを追加」と入力</li>
+                <li><strong>「Commit new file」</strong> をクリック</li>
+            </ol>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ index.htmlファイルが作成された</li>
+                    <li>□ ファイル一覧に表示されている</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(4)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(4)" class="btn btn-next">ステップ4完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step5" style="display:none;">
+            <h3>ステップ5: JavaScriptファイルの追加（v1.0）</h3>
+            <p>ToDoアプリの基本機能を実装します。まずは未完成版（コメントのみ）から始めます。</p>
+            
+            <ol>
+                <li><strong>「Add file」</strong> → <strong>「Create new file」</strong> をクリック</li>
+                <li>ファイル名に <span class="code">script.js</span> と入力</li>
+                <li>以下のJavaScriptコードを入力：</li>
+            </ol>
+            
+            <div class="terminal">
+<span class="comment">/**<br>
+ * ToDoアプリ v1.0 - 基本機能<br>
+ */</span><br>
+<br>
+<span class="comment">// DOM要素を取得</span><br>
+const taskList = document.getElementById('taskList');<br>
+<span class="comment">// TODO:追加ボタン</span><br>
+<span class="comment">// TODO:入力欄</span><br>
+<br>
+<span class="comment">// 初期データ</span><br>
+const initialTasks = [<br>
+  '洗濯をする',<br>
+  '掃除をする',<br>
+  '買い物に行く'<br>
+];<br>
+<br>
+<span class="comment">// 初期データを表示</span><br>
+initialTasks.forEach(taskText => {<br>
+  const listItem = document.createElement('li');<br>
+  listItem.textContent = taskText;<br>
+  taskList.appendChild(listItem);<br>
+});<br>
+<br>
+<span class="comment">// TODO: ボタンクリック時の処理</span><br>
+<span class="comment">// ここに後で機能を追加予定</span><br>
+</div>
+            
+            <ol start="4">
+                <li>コミットメッセージに「ToDoアプリ v1.0 - 基本機能（初期データ表示のみ）」と入力</li>
+                <li><strong>「Commit new file」</strong> をクリック</li>
+            </ol>
+            
+            <div class="warning">
+                <strong>💡 ポイント:</strong> 最初は完成版ではなく、コメントや基本構造から始めるのが実際の開発でもよくあるパターンです。
+            </div>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ script.jsファイルが作成された</li>
+                    <li>□ リポジトリに3つのファイルが存在する</li>
+                    <li>□ コミットメッセージに「v1.0 - 基本機能」が記録された</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(5)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(5)" class="btn btn-next">ステップ5完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step6" style="display:none;">
+            <h3>ステップ6: script.jsの機能拡張（v2.0への更新）</h3>
+            <p>既存のscript.jsファイルを更新して、入力欄と追加ボタンを実装します。</p>
+            
+            <ol>
+                <li><span class="code">script.js</span> ファイルをクリック</li>
+                <li>右上の鉛筆アイコン（✏️）をクリックして編集モードに</li>
+                <li>ファイル内容を以下のように<strong>完全に置き換え</strong>：</li>
+            </ol>
+            
+            <div class="terminal">
+<span class="comment">/**<br>
+ * ToDoアプリ v2.0 - 機能拡張版<br>
+ */</span><br>
+<br>
+<span class="comment">// DOM要素を取得</span><br>
+const taskList = document.getElementById('taskList');<br>
+const addButton = document.getElementById('addButton'); <span class="comment">// 追加ボタン</span><br>
+const taskInput = document.getElementById('taskInput'); <span class="comment">// 入力欄</span><br>
+<br>
+<span class="comment">// 初期データ</span><br>
+const initialTasks = [<br>
+  '洗濯をする',<br>
+  '掃除をする',<br>
+  '買い物に行く'<br>
+];<br>
+<br>
+<span class="comment">// 初期データを表示</span><br>
+initialTasks.forEach(taskText => {<br>
+  const listItem = document.createElement('li');<br>
+  listItem.textContent = taskText;<br>
+  taskList.appendChild(listItem);<br>
+});<br>
+<br>
+<span class="comment">// ボタンクリック時の処理</span><br>
+addButton.addEventListener('click', () => {<br>
+  const newTaskText = taskInput.value.trim();<br>
+<br>
+  if (newTaskText !== '') {<br>
+    const listItem = document.createElement('li');<br>
+    listItem.textContent = newTaskText;<br>
+    taskList.appendChild(listItem);<br>
+    <br>
+    <span class="comment">// 入力欄をクリア</span><br>
+    taskInput.value = '';<br>
+    taskInput.focus();<br>
+  }<br>
+});<br>
+<br>
+<span class="comment">// Enterキーでも追加できるように</span><br>
+taskInput.addEventListener('keypress', (e) => {<br>
+  if (e.key === 'Enter') {<br>
+    addButton.click();<br>
+  }<br>
+});<br>
+</div>
+            
+            <ol start="4">
+                <li>コミットメッセージに「ToDoアプリ v2.0 - 入力機能とボタン処理を追加」と入力</li>
+                <li><strong>「Commit changes」</strong> をクリック</li>
+            </ol>
+            
+            <div class="warning">
+                <strong>💡 バージョン管理の実感:</strong> 同じファイルを更新することで、v1.0から v2.0への変更が明確に記録されます。ファイル履歴を見ると「どの部分が」「いつ」「なぜ」変更されたかが一目瞭然になります。これが共有ファイルでは不可能だった「変更履歴の追跡」です。
+            </div>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ script.jsファイルが更新された</li>
+                    <li>□ コミット履歴で v1.0 → v2.0 の変更が追跡されている</li>
+                    <li>□ ファイルの変更差分（diff）が確認できる</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(6)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(6)" class="btn btn-next">ステップ6完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step7" style="display:none;">
+            <h3>ステップ7: プルリクエストでレビュー体験</h3>
+            <p>チーム開発で重要な「レビュー機能」を体験してみましょう。タスク名を少し修正します。</p>
+            
+            <ol>
+                <li><span class="code">script.js</span> ファイルをクリック</li>
+                <li>右上の鉛筆アイコン（✏️）をクリックして編集モードに</li>
+                <li>初期データの1行目を以下のように修正：</li>
+            </ol>
+            
+            <div class="terminal">
+<span class="comment">// 修正前</span><br>
+'洗濯をする',<br>
+<br>
+<span class="comment">// 修正後</span><br>
+'洗濯物を干す',<br>
+</div>
+            
+            <ol start="4">
+                <li>右上の <strong>「Commit changes」</strong> をクリック</li>
+                <li>表示されたダイアログで以下を設定：
+                    <ul>
+                        <li>コミットメッセージ：「タスク名を具体的に修正」</li>
+                        <li><strong>「Create a new branch for this commit and start a pull request」</strong> にチェック</li>
+                        <li>ブランチ名を <span class="code">feature/update-task-names</span> に変更</li>
+                    </ul>
+                </li>
+                <li><strong>「Propose changes」</strong> をクリック</li>
+            </ol>
+            
+            <div class="warning">
+                <strong>💡 ブランチ名のベストプラクティス:</strong> <span class="code">feature/機能名</span> や <span class="code">fix/修正内容</span> のように、目的が分かる名前にするのが一般的です。
+            </div>
+            
+            <ol start="7">
+                <li>「Open a pull request」画面で以下を入力：
+                    <ul>
+                        <li><strong>タイトル:</strong> 「タスク名をより具体的な表現に修正」</li>
+                        <li><strong>説明:</strong> 「洗濯をする → 洗濯物を干す に変更して、より具体的なタスク内容にしました。」</li>
+                    </ul>
+                </li>
+                <li><strong>「Create pull request」</strong> をクリック</li>
+            </ol>
+            
+            <div class="warning">
+                <strong>💡 レビューのポイント:</strong> 
+                <ul>
+                    <li><strong>「Files changed」タブ</strong>で変更差分を確認</li>
+                    <li><strong>緑色（+）</strong>が追加、<strong>赤色（-）</strong>が削除</li>
+                    <li>小さな変更でも、意図が伝わるか確認することが重要</li>
+                    <li>実際のチーム開発では、他の人がレビューしてからマージします</li>
+                </ul>
+            </div>
+            
+            <ol start="9">
+                <li><strong>「Files changed」</strong> タブで変更内容を確認</li>
+                <li><strong>「Conversation」</strong> タブに戻る</li>
+                <li><strong>「Merge pull request」</strong> をクリック</li>
+                <li><strong>「Confirm merge」</strong> をクリック</li>
+                <li><strong>「Delete branch」</strong> をクリックしてブランチを削除</li>
+            </ol>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ プルリクエストが作成された</li>
+                    <li>□ 変更差分が確認できた</li>
+                    <li>□ プルリクエストがマージされた</li>
+                    <li>□ mainブランチに変更が反映された</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(7)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(7)" class="btn btn-next">ステップ7完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step8" style="display:none;">
+            <h3>ステップ8: v1.0のリリース作成</h3>
+            <p>安定版としてv1.0をリリースします。まず過去のコミットからリリースを作成します。</p>
+            
+            <ol>
+                <li>右側のサイドバーから <strong>「Releases」</strong> をクリック</li>
+                <li><strong>「Create a new release」</strong> をクリック</li>
+                <li>タグ名に <span class="code">v1.0</span> と入力</li>
+                <li><strong>「Choose a tag」</strong> で「プロジェクト説明を追加」のコミットを選択</li>
+                <li>リリースタイトルに「ToDoアプリ v1.0 - 初回リリース」と入力</li>
+                <li>説明に「基本的なHTML構造と初期データ表示機能」と入力</li>
+                <li><strong>「Publish release」</strong> をクリック</li>
+            </ol>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ v1.0のリリースが作成された</li>
+                    <li>□ ダウンロード可能なzipファイルが生成された</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(8)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(8)" class="btn btn-next">ステップ8完了 →</button>
+            </div>
+        </div>
+        
+        <div class="step" id="step9" style="display:none;">
+            <h3>ステップ9: v2.0のリリース作成</h3>
+            <p>機能拡張版をv2.0としてリリースします。最新のコミットからリリースを作成します。</p>
+            
+            <ol>
+                <li><strong>「Create a new release」</strong> をクリック</li>
+                <li>タグ名に <span class="code">v2.0</span> と入力</li>
+                <li>リリースタイトルに「ToDoアプリ v2.0 - 機能拡張版」と入力</li>
+                <li>説明に「入力機能とボタン処理を追加。ユーザーが新しいタスクを追加できるようになりました。」と入力</li>
+                <li><strong>「Publish release」</strong> をクリック</li>
+            </ol>
+            
+            <div class="checkpoint">
+                <h4>✅ チェックポイント</h4>
+                <ul>
+                    <li>□ v2.0のリリースが作成された</li>
+                    <li>□ 2つのバージョンがリリース一覧に表示された</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(9)" class="btn btn-back">← 前へ</button>
+                <button onclick="completeStep(9)" class="btn btn-next">ステップ9完了！</button>
+            </div>
+        </div>
+        
+        <div id="completion" style="display:none;">
+            <h2>🎉 おめでとうございます！</h2>
+            <p>GitHubの基本的な機能を体験できました。</p>
+            
+            <h3>今回学んだこと</h3>
+            <ul>
+                <li>✅ リポジトリの作成とファイル管理</li>
+                <li>✅ コミットによる変更履歴の記録</li>
+                <li>✅ リリース機能による版管理</li>
+                <li>✅ ファイルのバージョン管理</li>
+            </ul>
+            
+            <h3>次のステップ</h3>
+            <p>ブラウザでの基本操作をマスターしました。次は...</p>
+            
+            <div class="nav-buttons">
+                <button onclick="goBackStep(10)" class="btn btn-back">← ステップ9に戻る</button>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <a href="03_company_setup.html" class="btn">🏢 会社導入について学ぶ</a>
+                <a href="04_advanced_hands_on.html" class="btn">⚡ 本格的な開発環境で実践</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 GitHub Tutorial for Kintone Developers</p>
+    </div>
+
+    <script>
+        let currentStepNum = 0;
+        const totalSteps = 9;
+
+        function completeStep(stepNum) {
+            // 現在のステップを非表示
+            document.getElementById(`step${stepNum}`).style.display = 'none';
+            
+            // 次のステップを表示
+            if (stepNum < totalSteps) {
+                document.getElementById(`step${stepNum + 1}`).style.display = 'block';
+                currentStepNum = stepNum;
+            } else {
+                document.getElementById('completion').style.display = 'block';
+                currentStepNum = totalSteps;
+            }
+            
+            // プログレスバーを更新
+            updateProgress();
+        }
+
+        function goBackStep(stepNum) {
+            // 現在のステップを非表示
+            if (stepNum === totalSteps) {
+                document.getElementById('completion').style.display = 'none';
+            } else {
+                document.getElementById(`step${stepNum}`).style.display = 'none';
+            }
+            
+            // 前のステップを表示
+            document.getElementById(`step${stepNum - 1}`).style.display = 'block';
+            currentStepNum = stepNum - 2; // completeStepでは+1されるため-2
+            
+            // プログレスバーを更新
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progressBar = document.getElementById('progressBar');
+            const currentStepElement = document.getElementById('currentStep');
+            const progress = (currentStepNum / totalSteps) * 100;
+            
+            progressBar.style.width = progress + '%';
+            currentStepElement.textContent = currentStepNum;
+        }
+
+        // 初期化
+        document.getElementById('step1').style.display = 'block';
+    </script>
+</body>
+</html>

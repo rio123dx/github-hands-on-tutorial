@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub本格実践 - 開発環境でのハンズオン</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>⚡ GitHub本格実践</h1>
+        <p>VS Code + WSL環境でプロ仕様の開発ワークフローを体験</p>
+    </div>
+    
+    <div class="nav">
+        <a href="01_introduction.html">📚 基礎知識</a>
+        <a href="02_hands_on_browser.html">💻 ブラウザ体験</a>
+        <span class="current">⚡ 本格実践</span>
+        <a href="03_company_setup.html">🏢 会社導入</a>
+    </div>
+    
+    <div class="content">
+        <div class="prereq">
+            <h3>📋 前提条件</h3>
+            <p>このハンズオンを始める前に、以下が完了していることを確認してください：</p>
+            <ul>
+                <li>✅ <a href="02_hands_on_browser.html">ブラウザ版GitHub体験</a>の完了</li>
+                <li>✅ GitHubアカウントの作成済み</li>
+                <li>✅ Windows 10/11 環境</li>
+                <li>✅ インターネット接続</li>
+            </ul>
+        </div>
+        
+        <div class="toc">
+            <h3>📋 このハンズオンの流れ（所要時間：約2-3時間）</h3>
+            <ul>
+                <li><strong>Phase 1:</strong> Windows環境の設定（45分）
+                    <ul>
+                        <li>WSL2のインストール</li>
+                        <li>Visual Studio Codeのセットアップ</li>
+                    </ul>
+                </li>
+                <li><strong>Phase 2:</strong> GitHub設定（30分）
+                    <ul>
+                        <li>SSH認証の設定</li>
+                        <li>Git設定の初期化</li>
+                    </ul>
+                </li>
+                <li><strong>Phase 3:</strong> 開発ワークフロー実践（60分）
+                    <ul>
+                        <li>リポジトリのクローン</li>
+                        <li>ブランチ作成と開発</li>
+                        <li>プルリクエスト体験</li>
+                    </ul>
+                </li>
+                <li><strong>Phase 4:</strong> コラボレーション機能（30分）
+                    <ul>
+                        <li>コンフリクト解決</li>
+                        <li>リリース管理</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Phase 1: Windows環境の設定 -->
+    <div class="content">
+        <div class="section">
+            <h2>🔧 Phase 1: Windows環境の設定</h2>
+            <div class="time-estimate">
+                <strong>⏱️ 所要時間：</strong> 約45分
+            </div>
+            
+            <div class="subsection">
+                <h3>1.1 WSL2のインストール</h3>
+                <p>Windows Subsystem for Linux 2を有効化してLinux環境を構築します。</p>
+                
+                <h4>ステップ1: PowerShellを管理者権限で開く</h4>
+                <ol>
+                    <li>スタートメニューで「PowerShell」を検索</li>
+                    <li>「Windows PowerShell」を右クリック → 「管理者として実行」</li>
+                </ol>
+                
+                <div class="screenshot-placeholder">
+                    📸 スクリーンショット: PowerShell管理者実行
+                </div>
+                
+                <h4>ステップ2: WSL機能を有効化</h4>
+                <p>以下のコマンドを実行してWSLを有効化します：</p>
+                
+                <div class="terminal">
+<span class="prompt">PS C:\WINDOWS\system32></span> wsl --install
+<span class="comment"># Ubuntu ディストリビューションがインストールされます</span>
+</div>
+                
+                <div class="warning">
+                    <strong>⚠️ 注意:</strong> インストール完了後、システムの再起動が必要です。再起動後、Ubuntu のセットアップ画面が自動で開きます。
+                </div>
+                
+                <h4>ステップ3: Ubuntu セットアップ</h4>
+                <ol>
+                    <li>再起動後、Ubuntu ターミナルが開きます</li>
+                    <li>ユーザー名を入力（半角英数字、推奨：自分の名前）</li>
+                    <li>パスワードを設定（入力時は表示されませんが入力されています）</li>
+                </ol>
+                
+                <div class="terminal">
+<span class="comment"># Ubuntu セットアップ画面の例</span>
+Enter new UNIX username: <span class="prompt">yourname</span>
+New password: <span class="comment">(パスワードを入力)</span>
+Retype new password: <span class="comment">(パスワードを再入力)</span>
+</div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ WSL2が正常にインストールされた</li>
+                        <li>□ Ubuntu ターミナルが起動する</li>
+                        <li>□ ユーザー名とパスワードが設定済み</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>1.2 Visual Studio Codeのセットアップ</h3>
+                <p>プロ仕様の開発環境を構築します。</p>
+                
+                <h4>ステップ1: VS Code本体のインストール</h4>
+                <ol>
+                    <li><a href="https://code.visualstudio.com/" target="_blank">VS Code公式サイト</a>からダウンロード</li>
+                    <li>インストーラーを実行</li>
+                    <li>「PATHに追加」オプションを有効にして完了</li>
+                </ol>
+                
+                <div class="screenshot-placeholder">
+                    📸 スクリーンショット: VS Codeインストール画面
+                </div>
+                
+                <h4>ステップ2: 必須拡張機能のインストール</h4>
+                <p>VS Codeを開いて、以下の拡張機能をインストールします：</p>
+                
+                <ol>
+                    <li><strong>WSL拡張機能</strong>
+                        <ul>
+                            <li>拡張機能タブ（Ctrl+Shift+X）を開く</li>
+                            <li>「WSL」で検索 → Microsoft製をインストール</li>
+                        </ul>
+                    </li>
+                    <li><strong>Japanese Language Pack</strong>
+                        <ul>
+                            <li>「Japanese Language Pack for Visual Studio Code」をインストール</li>
+                            <li>VS Code再起動後、日本語で表示される</li>
+                        </ul>
+                    </li>
+                    <li><strong>GitHub Copilot</strong>（オプション）
+                        <ul>
+                            <li>「GitHub Copilot」をインストール</li>
+                            <li>GitHubアカウントでサインイン</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <div class="success">
+                    <strong>💡 プロのヒント:</strong> WSL拡張機能により、WindowsのVS CodeからLinux環境で直接開発できます。これが現代的な開発スタイルです。
+                </div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ VS Codeが正常にインストールされた</li>
+                        <li>□ WSL拡張機能が有効になっている</li>
+                        <li>□ VS Codeが日本語で表示されている</li>
+                        <li>□ 左下に「WSL: Ubuntu」の表示がある</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Phase 2: GitHub設定 -->
+    <div class="content">
+        <div class="section">
+            <h2>🔐 Phase 2: GitHub設定</h2>
+            <div class="time-estimate">
+                <strong>⏱️ 所要時間：</strong> 約30分
+            </div>
+            
+            <div class="subsection">
+                <h3>2.1 SSH認証の設定</h3>
+                <p>セキュアな認証方式でGitHubに接続する設定を行います。</p>
+                
+                <h4>ステップ1: SSH鍵ペアの生成</h4>
+                <p>VS CodeでUbuntu ターミナルを開きます：</p>
+                <ol>
+                    <li>VS Codeで <span class="code">Ctrl + Shift + `</span> を押してターミナルを開く</li>
+                    <li>以下のコマンドを実行：</li>
+                </ol>
+                
+                <div class="terminal">
+<span class="prompt">user@hostname:~$</span> ssh-keygen -t ed25519 -C "your-email@example.com"
+<span class="comment"># your-email@example.com を実際のメールアドレスに変更</span>
+
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/user/.ssh/id_ed25519): <span class="comment">(Enterを押下)</span>
+Enter passphrase (empty for no passphrase): <span class="comment">(Enterを押下 - パスフレーズなし)</span>
+Enter same passphrase again: <span class="comment">(Enterを押下)</span>
+</div>
+                
+                <h4>ステップ2: 公開鍵をクリップボードにコピー</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~$</span> cat ~/.ssh/id_ed25519.pub
+<span class="comment"># 表示された内容をコピー (ssh-ed25519 から始まる長い文字列)</span>
+</div>
+                
+                <h4>ステップ3: GitHubに公開鍵を登録</h4>
+                <ol>
+                    <li>ブラウザで <a href="https://github.com/settings/keys" target="_blank">GitHub SSH keys設定</a> を開く</li>
+                    <li>「New SSH key」をクリック</li>
+                    <li>Title: 「WSL Ubuntu」</li>
+                    <li>Key: コピーした公開鍵を貼り付け</li>
+                    <li>「Add SSH key」をクリック</li>
+                </ol>
+                
+                <div class="screenshot-placeholder">
+                    📸 スクリーンショット: GitHub SSH key追加画面
+                </div>
+                
+                <h4>ステップ4: SSH接続テスト</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~$</span> ssh -T git@github.com
+The authenticity of host 'github.com' can't be established.
+...
+Are you sure you want to continue connecting (yes/no/[fingerprint])? <span class="prompt">yes</span>
+Hi [username]! You've successfully authenticated, but GitHub does not provide shell access.
+</div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ SSH鍵ペアが生成された</li>
+                        <li>□ 公開鍵がGitHubに登録された</li>
+                        <li>□ SSH接続テストが成功した</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>2.2 Git設定の初期化</h3>
+                <p>Gitの基本設定を行います。</p>
+                
+                <h4>ユーザー情報の設定</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~$</span> git config --global user.name "Your Name"
+<span class="prompt">user@hostname:~$</span> git config --global user.email "your-email@example.com"
+<span class="prompt">user@hostname:~$</span> git config --global init.defaultBranch main
+
+<span class="comment"># 設定確認</span>
+<span class="prompt">user@hostname:~$</span> git config --list
+</div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ ユーザー名が設定された</li>
+                        <li>□ メールアドレスが設定された</li>
+                        <li>□ デフォルトブランチが main に設定された</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Phase 3: 開発ワークフロー実践 -->
+    <div class="content">
+        <div class="section">
+            <h2>🚀 Phase 3: 開発ワークフロー実践</h2>
+            <div class="time-estimate">
+                <strong>⏱️ 所要時間：</strong> 約60分
+            </div>
+            
+            <div class="subsection">
+                <h3>3.1 リポジトリのクローンとセットアップ</h3>
+                <p>ブラウザ版で作成したリポジトリをローカルにクローンします。</p>
+                
+                <h4>作業ディレクトリの作成</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~$</span> mkdir ~/projects
+<span class="prompt">user@hostname:~$</span> cd ~/projects
+<span class="prompt">user@hostname:~/projects$</span> git clone git@github.com:[username]/js_tutorial.git
+<span class="prompt">user@hostname:~/projects$</span> cd js_tutorial
+</div>
+                
+                <h4>VS Codeでプロジェクトを開く</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> code .
+<span class="comment"># VS Code が開き、プロジェクトが表示されます</span>
+</div>
+                
+                <div class="success">
+                    <strong>🎉 成功！</strong> これで本格的な開発環境が整いました。VS CodeでGitHubリポジトリを直接編集できます。
+                </div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ リポジトリがローカルにクローンされた</li>
+                        <li>□ VS Codeでプロジェクトが開いている</li>
+                        <li>□ ファイル一覧が表示されている</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>3.2 ブランチ作成と機能開発</h3>
+                <p>新機能を安全に開発するためのブランチ作成を体験します。</p>
+                
+                <h4>ステップ1: 新しい機能ブランチの作成</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> git checkout -b feature/enhanced-todo
+<span class="comment"># 「enhanced-todo」機能用のブランチを作成して切り替え</span>
+
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> git branch
+<span class="comment"># 現在のブランチを確認</span>
+  main
+* feature/enhanced-todo
+</div>
+                
+                <h4>ステップ2: HTMLファイルの更新</h4>
+                <p>VS Codeで <span class="code">index.html</span> を開いて、v2.0の機能に対応させます：</p>
+                
+                <ol>
+                    <li>index.html の <span class="code">&lt;script src="script.js"&gt;</span> を <span class="code">&lt;script src="script_v2.js"&gt;</span> に変更</li>
+                    <li>ファイルを保存（Ctrl+S）</li>
+                </ol>
+                
+                <h4>ステップ3: 新機能ファイルの作成</h4>
+                <p>VS Codeで新しいファイル <span class="code">script_v3.js</span> を作成：</p>
+                
+                <div class="terminal">
+<span class="comment">// script_v3.js - 削除機能付きToDoアプリ</span><br>
+const taskList = document.getElementById('taskList');<br>
+const addButton = document.getElementById('addButton');<br>
+const taskInput = document.getElementById('taskInput');<br>
+<br>
+<span class="comment">// 初期データ</span><br>
+const initialTasks = [<br>
+  '洗濯をする',<br>
+  '掃除をする',<br>
+  '買い物に行く'<br>
+];<br>
+<br>
+<span class="comment">// 初期データを表示</span><br>
+initialTasks.forEach(taskText => {<br>
+  addTaskToList(taskText);<br>
+});<br>
+<br>
+<span class="comment">// タスクをリストに追加する関数</span><br>
+function addTaskToList(taskText) {<br>
+  const listItem = document.createElement('li');<br>
+  listItem.innerHTML = `<br>
+    &lt;span&gt;${taskText}&lt;/span&gt;<br>
+    &lt;button class="delete-btn" onclick="deleteTask(this)"&gt;削除&lt;/button&gt;<br>
+  `;<br>
+  taskList.appendChild(listItem);<br>
+}<br>
+<br>
+<span class="comment">// 削除機能</span><br>
+function deleteTask(button) {<br>
+  button.parentElement.remove();<br>
+}<br>
+<br>
+<span class="comment">// 追加ボタンの処理</span><br>
+addButton.addEventListener('click', () => {<br>
+  const newTaskText = taskInput.value.trim();<br>
+  if (newTaskText !== '') {<br>
+    addTaskToList(newTaskText);<br>
+    taskInput.value = '';<br>
+    taskInput.focus();<br>
+  }<br>
+});<br>
+<br>
+<span class="comment">// Enterキーでの追加</span><br>
+taskInput.addEventListener('keypress', (e) => {<br>
+  if (e.key === 'Enter') {<br>
+    addButton.click();<br>
+  }<br>
+});<br>
+</div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ 新しいブランチが作成された</li>
+                        <li>□ index.htmlが更新された</li>
+                        <li>□ script_v3.jsが作成された</li>
+                        <li>□ VS Code左側でファイル変更が表示されている</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>3.3 変更のコミットとプッシュ</h3>
+                <p>VS Codeの統合Git機能を使って変更をコミットします。</p>
+                
+                <h4>ステップ1: VS CodeのGit機能を使用</h4>
+                <ol>
+                    <li>VS Code左側の「ソース管理」タブ（Git アイコン）をクリック</li>
+                    <li>変更されたファイルが一覧表示される</li>
+                    <li>各ファイルの「+」ボタンでステージング</li>
+                    <li>コミットメッセージを入力：「削除機能付きToDoアプリ v3.0を追加」</li>
+                    <li>「コミット」ボタンをクリック</li>
+                </ol>
+                
+                <div class="screenshot-placeholder">
+                    📸 スクリーンショット: VS Code Git操作画面
+                </div>
+                
+                <h4>ステップ2: ブランチをGitHubにプッシュ</h4>
+                <div class="terminal">
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> git push origin feature/enhanced-todo
+<span class="comment"># ブランチをGitHubにプッシュ</span>
+</div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ 変更がコミットされた</li>
+                        <li>□ ブランチがGitHubにプッシュされた</li>
+                        <li>□ GitHubでブランチが確認できる</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>3.4 プルリクエストの作成</h3>
+                <p>プロの開発現場で使われるコードレビュー機能を体験します。</p>
+                
+                <h4>プルリクエストの作成</h4>
+                <ol>
+                    <li>ブラウザでGitHubリポジトリを開く</li>
+                    <li>「Compare & pull request」ボタンが表示されるのでクリック</li>
+                    <li>タイトル：「削除機能付きToDoアプリ v3.0」</li>
+                    <li>説明文を記入：</li>
+                </ol>
+                
+                <div class="terminal">
+<span class="comment">## 変更内容</span><br>
+- タスクの削除機能を追加<br>
+- UIの改善（削除ボタン）<br>
+- コードの関数化とモジュール化<br>
+<br>
+<span class="comment">## テスト方法</span><br>
+1. ToDoを追加<br>
+2. 削除ボタンをクリック<br>
+3. タスクが削除されることを確認<br>
+<br>
+<span class="comment">## レビューポイント</span><br>
+- 削除機能の動作確認<br>
+- UIの見た目確認<br>
+</div>
+                
+                <ol start="5">
+                    <li>「Create pull request」をクリック</li>
+                </ol>
+                
+                <div class="success">
+                    <strong>💡 重要:</strong> プルリクエストは単なるマージ手段ではなく、品質保証とナレッジ共有の仕組みです。実際のチームではここでコードレビューが行われます。
+                </div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ プルリクエストが作成された</li>
+                        <li>□ 変更差分が表示されている</li>
+                        <li>□ 説明文が記入されている</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Phase 4: コラボレーション機能 -->
+    <div class="content">
+        <div class="section">
+            <h2>🤝 Phase 4: コラボレーション機能</h2>
+            <div class="time-estimate">
+                <strong>⏱️ 所要時間：</strong> 約30分
+            </div>
+            
+            <div class="subsection">
+                <h3>4.1 プルリクエストのマージ</h3>
+                <p>自分でレビューしてマージする体験をします。</p>
+                
+                <h4>セルフレビューとマージ</h4>
+                <ol>
+                    <li>作成したプルリクエストページで「Files changed」タブをクリック</li>
+                    <li>変更内容を確認（実際のレビューではここで他の人がコメント）</li>
+                    <li>「Review changes」→「Approve」→「Submit review」</li>
+                    <li>「Merge pull request」→「Confirm merge」</li>
+                </ol>
+                
+                <div class="warning">
+                    <strong>⚠️ 実際のチームでは:</strong> 自分でマージするのではなく、他のメンバーがレビューしてからマージします。
+                </div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ プルリクエストがマージされた</li>
+                        <li>□ mainブランチに変更が反映された</li>
+                        <li>□ 機能ブランチが削除された</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>4.2 ローカル環境の同期</h3>
+                <p>リモートの変更をローカルに反映します。</p>
+                
+                <div class="terminal">
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> git checkout main<br>
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> git pull origin main<br>
+<span class="comment"># リモートの最新状態をローカルに反映</span><br>
+<br>
+<span class="prompt">user@hostname:~/projects/js_tutorial$</span> git branch -d feature/enhanced-todo<br>
+<span class="comment"># 不要になった機能ブランチを削除</span><br>
+</div>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ mainブランチに切り替えた</li>
+                        <li>□ 最新の変更が反映された</li>
+                        <li>□ 機能ブランチが削除された</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3>4.3 リリース管理の実践</h3>
+                <p>v3.0として新しいリリースを作成します。</p>
+                
+                <h4>GitHubでのリリース作成</h4>
+                <ol>
+                    <li>ブラウザでリポジトリの「Releases」を開く</li>
+                    <li>「Create a new release」をクリック</li>
+                    <li>タグ名：<span class="code">v3.0</span></li>
+                    <li>タイトル：「ToDoアプリ v3.0 - 削除機能搭載版」</li>
+                    <li>説明文：</li>
+                </ol>
+                
+                <div class="terminal">
+<span class="comment">## 新機能</span><br>
+- ✅ タスクの削除機能<br>
+- ✅ 改善されたUI/UX<br>
+- ✅ モジュール化されたコード<br>
+<br>
+<span class="comment">## アップグレード方法</span><br>
+1. script_v3.js を使用<br>
+2. 削除ボタンでタスクを削除可能<br>
+<br>
+<span class="comment">## 既知の課題</span><br>
+- ローカルストレージ未対応（次バージョンで対応予定）<br>
+</div>
+                
+                <ol start="6">
+                    <li>「Publish release」をクリック</li>
+                </ol>
+                
+                <div class="checkpoint">
+                    <h4>✅ チェックポイント</h4>
+                    <ul>
+                        <li>□ v3.0のリリースが作成された</li>
+                        <li>□ リリースノートが記載された</li>
+                        <li>□ zipファイルがダウンロード可能</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 完了とまとめ -->
+    <div class="content">
+        <div class="section">
+            <h2>🎉 ハンズオン完了！</h2>
+            
+            <div class="success">
+                <h3>お疲れ様でした！</h3>
+                <p>プロ仕様のGitHub開発ワークフローを一通り体験できました。</p>
+            </div>
+            
+            <h3>今回マスターしたスキル</h3>
+            <ul>
+                <li>✅ <strong>開発環境構築</strong>: WSL2 + VS Code のモダンな環境</li>
+                <li>✅ <strong>SSH認証</strong>: セキュアなGitHub接続</li>
+                <li>✅ <strong>ブランチ戦略</strong>: 機能開発とmainブランチの分離</li>
+                <li>✅ <strong>プルリクエスト</strong>: コードレビューとマージの流れ</li>
+                <li>✅ <strong>VS Code Git統合</strong>: GUIでの快適なGit操作</li>
+                <li>✅ <strong>リリース管理</strong>: タグとリリースノートの活用</li>
+            </ul>
+            
+            <h3>共有ファイル管理との違いを実感</h3>
+            <div class="comparison" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="important">
+                    <h4>❌ 以前の共有ファイル管理</h4>
+                    <ul>
+                        <li>ファイル名での世代管理</li>
+                        <li>誰が変更したか不明</li>
+                        <li>同時編集でのトラブル</li>
+                        <li>レビューなし</li>
+                    </ul>
+                </div>
+                <div class="success">
+                    <h4>✅ GitHub での管理</h4>
+                    <ul>
+                        <li>自動的な変更履歴</li>
+                        <li>変更者・理由が明確</li>
+                        <li>ブランチで並行開発</li>
+                        <li>プルリクエストでレビュー</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>次のステップ</h3>
+            <p>このスキルを実際のKintone開発に活用してみましょう：</p>
+            <ul>
+                <li>🏢 <a href="03_company_setup.html">会社でのGitHub導入を検討</a></li>
+                <li>📚 Kintone JSコードをGitHubで管理開始</li>
+                <li>👥 チームメンバーとのコラボレーション開始</li>
+                <li>🤖 GitHub Copilot を活用したAIペアプログラミング</li>
+            </ul>
+            
+            <div class="important">
+                <h4>🚀 今日から始められること</h4>
+                <ol>
+                    <li>現在のKintone JSコードをGitHubリポジトリにアップロード</li>
+                    <li>機能追加や修正の際はブランチ作成→プルリクエストの流れを実践</li>
+                    <li>チームメンバーにGitHubアカウント作成をお願い</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 GitHub Tutorial for Kintone Developers</p>
+        <p>💻 Happy Coding with GitHub! 🚀</p>
+    </div>
+</body>
+</html>

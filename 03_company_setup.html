@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社導入ガイド</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ページ固有のスタイル */
+        .org-structure {
+            background: #f6f8fa;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+        
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .cost-table th, .cost-table td {
+            border: 1px solid #e1e4e8;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .cost-table th {
+            background: #f6f8fa;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏢 会社導入ガイド</h1>
+        <p>チームでGitHubを導入する際の推奨構成</p>
+    </div>
+    
+    <div class="nav">
+        <a href="01_introduction.html">📚 基礎知識</a>
+        <a href="02_hands_on_browser.html">💻 ブラウザ体験</a>
+        <a href="04_advanced_hands_on.html">⚡ 本格実践</a>
+        <span class="current">🏢 会社導入</span>
+    </div>
+    
+    <div class="content">
+        <h2>⚠️ 避けるべき構成</h2>
+        <div class="warning">
+            <h3>❌ アカウント共有は危険</h3>
+            <ul>
+                <li>一つのアカウントを複数人で共有</li>
+                <li>セキュリティリスクが高い</li>
+                <li>変更履歴で誰が変更したか分からない</li>
+                <li>パスワード変更時に全員に影響</li>
+            </ul>
+        </div>
+        
+        <h2>✅ 推奨構成：GitHub Organization</h2>
+        <div class="success">
+            <h3>GitHub Organization + 個人アカウント</h3>
+            <p>企業での利用に最適化された構成です。</p>
+        </div>
+        
+        <h3>Organization構成例</h3>
+        <div class="org-structure">
+Organization: gas-company-backoffice<br>
+├── Owner（管理者）<br>
+│   └── 友人 (it-manager@company.co.jp)<br>
+├── Member（開発者）<br>
+│   ├── 開発者A (dev-a@company.co.jp)<br>
+│   ├── 開発者B (dev-b@company.co.jp)<br>
+│   └── 開発者C (dev-c@company.co.jp)<br>
+└── Outside Collaborator（必要に応じて）<br>
+    └── 外部コンサルタント等
+        </div>
+        
+        <h3>リポジトリ構成</h3>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>リポジトリ</th>
+                    <th>用途</th>
+                    <th>Owner権限</th>
+                    <th>Member権限</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>kintone-scripts</code></td>
+                    <td>Kintone JavaScript管理</td>
+                    <td>Admin（全操作可能）</td>
+                    <td>Write（PR必須）</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>ブランチ戦略</h3>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>ブランチ名</th>
+                    <th>用途</th>
+                    <th>保護設定</th>
+                    <th>デプロイ先</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>master</code></td>
+                    <td>本番環境用</td>
+                    <td>PR必須、レビュー必須</td>
+                    <td>Kintone本番環境</td>
+                </tr>
+                <tr>
+                    <td><code>develop</code></td>
+                    <td>開発・テスト用</td>
+                    <td>直接プッシュ可能</td>
+                    <td>Kintoneテスト環境</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>セキュリティ設定</h3>
+        <ul>
+            <li><strong>2要素認証（2FA）必須</strong>：全メンバーに設定</li>
+            <li><strong>ブランチ保護</strong>：mainブランチへの直接プッシュ禁止</li>
+            <li><strong>プルリクエスト必須</strong>：本番コード変更時のレビュー</li>
+        </ul>
+        
+        <h3>導入ステップ</h3>
+        <ol>
+            <li><strong>友人がOrganization作成</strong></li>
+            <li><strong>チームメンバーの個人アカウント作成支援</strong></li>
+            <li><strong>Organizationへの招待</strong></li>
+            <li><strong>リポジトリ作成と権限設定</strong></li>
+            <li><strong>セキュリティ設定の適用</strong></li>
+            <li><strong>運用ルールの文書化</strong></li>
+        </ol>
+        
+        <h3>コスト試算</h3>
+        <h4>基本プラン</h4>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>プラン</th>
+                    <th>月額費用</th>
+                    <th>年間費用</th>
+                    <th>5名チームの場合</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GitHub Team</td>
+                    <td>$4/ユーザー</td>
+                    <td>$48/ユーザー</td>
+                    <td>約36,000円/年</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h4>+α GitHub Copilot Business（推奨）</h4>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>プラン</th>
+                    <th>月額費用</th>
+                    <th>年間費用</th>
+                    <th>5名チームの場合</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GitHub Copilot Business</td>
+                    <td>$19/ユーザー</td>
+                    <td>$228/ユーザー</td>
+                    <td>約171,000円/年</td>
+                </tr>
+                <tr>
+                    <td><strong>合計（Team + Copilot）</strong></td>
+                    <td><strong>$23/ユーザー</strong></td>
+                    <td><strong>$276/ユーザー</strong></td>
+                    <td><strong>約207,000円/年</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="success">
+            <h4>💡 GitHub Copilot Business の価値</h4>
+            <ul>
+                <li><strong>開発効率30-50%向上</strong>: AIがコード補完・生成</li>
+                <li><strong>コード品質向上</strong>: ベストプラクティス提案</li>
+                <li><strong>学習効果</strong>: 新しい技術習得の加速</li>
+                <li><strong>企業向け機能</strong>: プライベートリポジトリ対応、管理機能</li>
+            </ul>
+        </div>
+        
+        <p><strong>投資対効果：</strong> セキュリティとバックアップを考慮すれば十分にペイする投資です。</p>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 GitHub Tutorial for Kintone Developers</p>
+    </div>
+</body>
+</html>
