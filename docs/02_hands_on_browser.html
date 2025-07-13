@@ -473,13 +473,14 @@ taskInput.addEventListener('keypress', (e) => {<br>
         
         <div class="step" id="step8" style="display:none;">
             <h3>ステップ8: v1.0のリリース作成</h3>
-            <p>安定版としてv1.0をリリースします。まず過去のコミットからリリースを作成します。</p>
+            <p>安定版としてv1.0をリリースします。過去の特定のコミットを選択してリリースを作成します。</p>
             
             <ol>
                 <li>右側のサイドバーから <strong>「Releases」</strong> をクリック</li>
                 <li><strong>「Create a new release」</strong> をクリック</li>
                 <li>タグ名に <span class="code">v1.0</span> と入力</li>
-                <li><strong>「Choose a tag」</strong> で「プロジェクト説明を追加」のコミットを選択</li>
+                <li><strong>「Target」</strong> で「main」ブランチのプルダウンをクリック</li>
+                <li>コミット一覧から「ToDoアプリ v1.0 - 基本機能（初期データ表示のみ）」のコメントのあるコミットを選択</li>
                 <li>リリースタイトルに「ToDoアプリ v1.0 - 初回リリース」と入力</li>
                 <li>説明に「基本的なHTML構造と初期データ表示機能」と入力</li>
                 <li><strong>「Publish release」</strong> をクリック</li>
@@ -501,11 +502,12 @@ taskInput.addEventListener('keypress', (e) => {<br>
         
         <div class="step" id="step9" style="display:none;">
             <h3>ステップ9: v2.0のリリース作成</h3>
-            <p>機能拡張版をv2.0としてリリースします。最新のコミットからリリースを作成します。</p>
+            <p>機能拡張版をv2.0としてリリースします。最新のmainブランチからリリースを作成します。</p>
             
             <ol>
                 <li><strong>「Create a new release」</strong> をクリック</li>
                 <li>タグ名に <span class="code">v2.0</span> と入力</li>
+                <li><strong>「Target」</strong> はデフォルトの「main」ブランチのまま（最新のコミットが自動選択）</li>
                 <li>リリースタイトルに「ToDoアプリ v2.0 - 機能拡張版」と入力</li>
                 <li>説明に「入力機能とボタン処理を追加。ユーザーが新しいタスクを追加できるようになりました。」と入力</li>
                 <li><strong>「Publish release」</strong> をクリック</li>
